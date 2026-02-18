@@ -35,7 +35,7 @@ const Navbar = ({ onMenuClick, addToast }) => {
     };
 
     return (
-        <header className="sticky top-0 z-40 bg-slate-900/80 backdrop-blur-xl border-b border-white/10 p-4 md:p-6">
+        <header className="sticky top-0 z-40 bg-slate-900/80 backdrop-blur-xl border-b border-white/10 p-3 md:p-6">
             <div className="flex items-center justify-between">
                 <div className="flex items-center gap-4">
                     <button
@@ -45,7 +45,10 @@ const Navbar = ({ onMenuClick, addToast }) => {
                         <Menu size={24} />
                     </button>
                     <div>
-                        <h1 className="text-xl md:text-2xl font-bold text-white">Dashboard Overview</h1>
+                        <h1 className="text-xl md:text-2xl font-bold text-white">
+                            <span className="hidden lg:inline">Dashboard Overview</span>
+                            <span className="lg:hidden">Dashboard</span>
+                        </h1>
                         <p className="text-gray-400 text-xs md:text-sm mt-1 hidden sm:block">Welcome back, get your latest updates here.</p>
                     </div>
                 </div>

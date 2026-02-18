@@ -72,8 +72,8 @@ const StatCard = ({ title, value, change, isPositive, icon: Icon, index = 0 }) =
             </div>
 
             <div>
-                <h3 className="text-gray-400 text-sm font-medium mb-1">{title}</h3>
-                <div className="text-2xl font-bold text-white mb-2 font-display tracking-tight">
+                <h3 className="text-gray-400 text-xs md:text-sm font-medium mb-1">{title}</h3>
+                <div className="text-xl md:text-2xl font-bold text-white mb-2 font-display tracking-tight">
                     {formatValue(displayValue)}
                 </div>
                 <motion.div

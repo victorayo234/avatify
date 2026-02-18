@@ -114,6 +114,25 @@ h6 {
   font-weight: 700;
   letter-spacing: -0.02em;
 }
+ 
+/* Responsive Typography */
+@media (max-width: 1024px) {
+  h1 { font-size: 1.5rem !important; }
+  h2 { font-size: 1.25rem !important; }
+  h3 { font-size: 1.125rem !important; }
+  .text-2xl { font-size: 1.25rem !important; }
+  .text-3xl { font-size: 1.5rem !important; }
+  .text-4xl { font-size: 1.875rem !important; }
+}
+ 
+@media (max-width: 640px) {
+  h1 { font-size: 1.25rem !important; }
+  h2 { font-size: 1.125rem !important; }
+  h3 { font-size: 1rem !important; }
+  .text-2xl { font-size: 1.125rem !important; }
+  .text-3xl { font-size: 1.25rem !important; }
+  .text-4xl { font-size: 1.5rem !important; }
+}
 
 .font-bold {
   font-weight: 700;
