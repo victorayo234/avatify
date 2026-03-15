@@ -4,7 +4,7 @@ import Layout from './components/Layout';
 import Dashboard from './pages/Dashboard';
 import Assets from './pages/Assets';
 import Market from './pages/Market';
-import Converter from './components/Converter';
+import FinancialToolkit from './components/FinancialToolkit';
 import Settings from './pages/Settings';
 import { ToastContainer } from './components/Toast';
 import { useToast } from './hooks/useToast';
@@ -22,7 +22,7 @@ function App() {
             <Route path="/" element={<Dashboard addToast={addToast} />} />
             <Route path="/assets" element={<Assets addToast={addToast} />} />
             <Route path="/market" element={<Market addToast={addToast} />} />
-            <Route path="/converter" element={<div className="max-w-md mx-auto mt-10"><Converter addToast={addToast} /></div>} />
+            <Route path="/converter" element={<FinancialToolkit addToast={addToast} />} />
             <Route path="/settings" element={<Settings addToast={addToast} />} />
             <Route path="*" element={<Navigate to="/" replace />} />
           </Routes>

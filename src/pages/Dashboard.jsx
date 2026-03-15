@@ -1,6 +1,6 @@
 import React from 'react';
 import MarketChart from '../components/MarketChart';
-import Converter from '../components/Converter';
+import FinancialToolkit from '../components/FinancialToolkit';
 import StatCard from '../components/StatCard';
 import SessionsByCountry from '../components/SessionsByCountry';
 import TransactionHistory from '../components/TransactionHistory';
@@ -14,7 +14,7 @@ const Dashboard = ({ addToast }) => {
     return (
         <div className="space-y-6">
             {/* Top Row: Balance Card & Stat Cards */}
-            <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6">
+            <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-4 gap-6">
                 {/* Balance Card Section - Spans 2 columns on large screens */}
                 <div className="xl:col-span-2 h-full">
                     <BalanceCard addToast={addToast} />
@@ -38,7 +38,7 @@ const Dashboard = ({ addToast }) => {
             </div>
 
             {/* Third Row: Density Widgets */}
-            <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6">
+            <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-4 gap-6">
                 <div className="xl:col-span-1">
                     <SessionsByCountry />
                 </div>
@@ -53,7 +53,7 @@ const Dashboard = ({ addToast }) => {
             {/* Fourth Row: Converter & Transactions */}
             <div className="grid grid-cols-1 xl:grid-cols-4 gap-6">
                 <div className="xl:col-span-1">
-                    <Converter addToast={addToast} />
+                    <FinancialToolkit addToast={addToast} variant="compact" />
                 </div>
                 {/* Transaction History - Spans 3 columns */}
                 <div className="xl:col-span-3">

@@ -33,19 +33,19 @@ const MarketChart = () => {
     };
 
     return (
-        <div className="bg-deep-purple-surface border border-white/5 rounded-3xl p-6 relative overflow-hidden h-full flex flex-col">
+        <div className="bg-dark-grey-surface border border-white/5 rounded-3xl p-6 relative overflow-hidden h-full flex flex-col">
             <div className="flex items-center justify-between mb-6">
                 <div>
                     <h3 className="text-lg font-bold text-white">Market Overview</h3>
                     <p className="text-sm text-gray-400">Bitcoin Price Trends</p>
                 </div>
-                <div className="flex p-1 bg-deep-purple-dark rounded-xl border border-white/5">
+                <div className="flex p-1 bg-dark-grey-base rounded-xl border border-white/5">
                     {timeframes.map((tf) => (
                         <button
                             key={tf}
                             onClick={() => handleTimeframeChange(tf)}
                             className={`px-3 py-1 rounded-lg text-xs font-medium transition-all ${selectedTimeframe === tf
-                                ? 'bg-deep-purple-accent text-white'
+                                ? 'bg-theme-ash text-white'
                                 : 'text-gray-400 hover:text-white hover:bg-white/5'
                                 }`}
                         >
@@ -60,19 +60,19 @@ const MarketChart = () => {
                     <AreaChart data={chartData}>
                         <defs>
                             <linearGradient id="colorPrice" x1="0" y1="0" x2="0" y2="1">
-                                <stop offset="5%" stopColor="#9333ea" stopOpacity={0.4} />
-                                <stop offset="95%" stopColor="#9333ea" stopOpacity={0} />
+                                <stop offset="5%" stopColor="#555555" stopOpacity={0.4} />
+                                <stop offset="95%" stopColor="#555555" stopOpacity={0} />
                             </linearGradient>
                             <filter id="glow" height="200%" width="200%">
                                 <feGaussianBlur in="SourceGraphic" stdDeviation="3" result="blur" />
-                                <feColorMatrix in="blur" type="matrix" values="0 0 0 0 0.576  0 0 0 0 0.2  0 0 0 0 0.917  0 0 0 1 0" result="coloredBlur" />
+                                <feColorMatrix in="blur" type="matrix" values="0 0 0 0 0.639  0 0 0 0 0.639  0 0 0 0 0.639  0 0 0 1 0" result="coloredBlur" />
                                 <feMerge>
                                     <feMergeNode in="coloredBlur" />
                                     <feMergeNode in="SourceGraphic" />
                                 </feMerge>
                             </filter>
                         </defs>
-                        <CartesianGrid strokeDasharray="3 3" stroke="#ffffff08" vertical={false} />
+                        <CartesianGrid strokeDasharray="3 3" stroke="#333333" vertical={false} />
                         <XAxis
                             dataKey="name"
                             stroke="#64748b"
@@ -91,20 +91,20 @@ const MarketChart = () => {
                         />
                         <Tooltip
                             contentStyle={{
-                                backgroundColor: '#1e1b2e',
+                                backgroundColor: '#121212',
                                 borderColor: 'rgba(255,255,255,0.05)',
                                 borderRadius: '16px',
                                 boxShadow: '0 10px 30px -10px rgba(0,0,0,0.5)',
                                 color: '#fff',
                                 padding: '12px'
                             }}
-                            itemStyle={{ color: '#d8b4fe', fontWeight: 'bold' }}
+                            itemStyle={{ color: '#d4d4d4', fontWeight: 'bold' }}
                             cursor={{ stroke: '#ffffff20', strokeWidth: 2 }}
                         />
                         <Area
                             type="monotone"
                             dataKey="price"
-                            stroke="#9333ea"
+                            stroke="#555555"
                             strokeWidth={3}
                             fillOpacity={1}
                             fill="url(#colorPrice)"

@@ -44,16 +44,13 @@ const ProfileEditModal = ({ isOpen, onClose, onSave, currentProfile }) => {
         onClose();
     };
 
-    // Get initials from name
     const getInitials = (name) => {
         if (!name) return 'AJ';
-        return name
-            .split(' ')
-            .map(word => word[0])
-            .join('')
-            .toUpperCase()
-            .slice(0, 2);
+        return name.split(' ').map(word => word[0]).join('').toUpperCase().slice(0, 2);
     };
+
+    const labelStyle = "block text-[10px] font-black text-gray-500 uppercase tracking-widest mb-2 ml-1";
+    const inputStyle = "w-full bg-dark-grey-base border border-white/5 rounded-2xl px-5 py-3 text-white placeholder-gray-600 focus:outline-none focus:border-theme-ash/40 focus:ring-4 focus:ring-theme-ash/5 transition-all";
 
     return (
         <AnimatePresence>
@@ -65,129 +62,115 @@ const ProfileEditModal = ({ isOpen, onClose, onSave, currentProfile }) => {
                         animate={{ opacity: 1 }}
                         exit={{ opacity: 0 }}
                         onClick={onClose}
-                        className="fixed inset-0 bg-black/60 backdrop-blur-sm z-50"
+                        className="fixed inset-0 bg-black/80 backdrop-blur-md z-[100]"
                     />
 
                     {/* Modal */}
                     <motion.div
-                        initial={{ opacity: 0, scale: 0.95, y: 20 }}
+                        initial={{ opacity: 0, scale: 0.9, y: 40 }}
                         animate={{ opacity: 1, scale: 1, y: 0 }}
-                        exit={{ opacity: 0, scale: 0.95, y: 20 }}
-                        className="fixed inset-0 z-50 flex items-center justify-center p-4"
+                        exit={{ opacity: 0, scale: 0.9, y: 40 }}
+                        className="fixed inset-0 z-[101] flex items-center justify-center p-4"
                     >
-                        <div className="bg-slate-800 border border-white/10 rounded-2xl shadow-2xl w-full max-w-md overflow-hidden">
+                        <div className="bg-dark-grey-surface/90 border border-white/10 rounded-[3rem] shadow-[0_32px_64px_-12px_rgba(0,0,0,0.5)] w-full max-w-xl overflow-hidden backdrop-blur-2xl">
                             {/* Header */}
-                            <div className="p-6 border-b border-white/10 flex items-center justify-between">
-                                <h2 className="text-xl font-bold text-white">Edit Profile</h2>
+                            <div className="p-8 border-b border-white/5 flex items-center justify-between">
+                                <div>
+                                    <h2 className="text-2xl font-display font-black text-white">System Profile</h2>
+                                    <p className="text-xs text-gray-500 mt-1">Update your identification across the node network.</p>
+                                </div>
                                 <button
                                     onClick={onClose}
-                                    className="p-2 rounded-lg hover:bg-white/5 text-gray-400 hover:text-white transition-colors"
+                                    className="p-3 rounded-2xl hover:bg-white/5 text-gray-400 hover:text-white transition-all border border-transparent hover:border-white/5"
                                 >
-                                    <X size={20} />
+                                    <X size={24} />
                                 </button>
                             </div>
 
                             {/* Form */}
-                            <form onSubmit={handleSubmit} className="p-6 space-y-6">
-                                {/* Avatar Upload */}
-                                <div className="flex flex-col items-center space-y-4">
-                                    <div className="relative">
-                                        <div className="w-24 h-24 rounded-full bg-deep-purple-accent flex items-center justify-center text-3xl font-bold text-white overflow-hidden">
-                                            {previewUrl ? (
-                                                <img src={previewUrl} alt="Preview" className="w-full h-full object-cover" />
-                                            ) : (
-                                                getInitials(formData.name)
-                                            )}
+                            <form onSubmit={handleSubmit} className="p-8 space-y-8">
+                                <div className="flex flex-col md:flex-row items-center space-y-6 md:space-y-0 md:space-x-8">
+                                    {/* Avatar Upload */}
+                                    <div className="relative group">
+                                        <div className="w-28 h-28 rounded-[2rem] bg-gradient-to-tr from-theme-ash to-dark-grey-base p-1 shadow-2xl group-hover:scale-105 transition-transform">
+                                            <div className="w-full h-full rounded-[1.8rem] bg-dark-grey-surface flex items-center justify-center overflow-hidden border border-white/5">
+                                                {previewUrl ? (
+                                                    <img src={previewUrl} alt="Preview" className="w-full h-full object-cover" />
+                                                ) : (
+                                                    <User size={48} className="text-white/40" />
+                                                )}
+                                            </div>
                                         </div>
-                                        <label className="absolute bottom-0 right-0 p-2 bg-deep-purple-accent rounded-full cursor-pointer hover:bg-purple-600 transition-colors shadow-lg">
-                                            <Upload size={16} className="text-white" />
-                                            <input
-                                                type="file"
-                                                accept="image/*"
-                                                onChange={handleFileChange}
-                                                className="hidden"
-                                            />
+                                        <label className="absolute -bottom-2 -right-2 p-3 bg-theme-ash text-black rounded-2xl cursor-pointer hover:bg-theme-ash-light transition-all shadow-xl border-4 border-dark-grey-surface group-hover:rotate-12">
+                                            <Upload size={18} />
+                                            <input type="file" accept="image/*" onChange={handleFileChange} className="hidden" />
                                         </label>
                                     </div>
-                                    <p className="text-xs text-gray-400">Click to upload profile picture</p>
+                                    <div className="flex-1 text-center md:text-left">
+                                        <h4 className="text-white font-bold text-lg">Identity Snapshot</h4>
+                                        <p className="text-gray-500 text-xs mt-1">Supported formats: JPG, PNG, WEBP. Max size 2MB.</p>
+                                    </div>
                                 </div>
 
-                                {/* Name */}
-                                <div>
-                                    <label className="block text-sm font-medium text-gray-400 mb-2">
-                                        <User size={16} className="inline mr-2" />
-                                        Full Name
-                                    </label>
-                                    <input
-                                        type="text"
-                                        value={formData.name}
-                                        onChange={(e) => handleChange('name', e.target.value)}
-                                        className="w-full bg-slate-900/50 border border-white/10 rounded-xl px-4 py-2.5 text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-deep-purple-accent/50 transition-all"
-                                        placeholder="Enter your name"
-                                        required
-                                    />
-                                </div>
-
-                                {/* Email */}
-                                <div>
-                                    <label className="block text-sm font-medium text-gray-400 mb-2">
-                                        <Mail size={16} className="inline mr-2" />
-                                        Email Address
-                                    </label>
-                                    <input
-                                        type="email"
-                                        value={formData.email}
-                                        onChange={(e) => handleChange('email', e.target.value)}
-                                        className="w-full bg-slate-900/50 border border-white/10 rounded-xl px-4 py-2.5 text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-deep-purple-accent/50 transition-all"
-                                        placeholder="Enter your email"
-                                        required
-                                    />
-                                </div>
-
-                                {/* Phone */}
-                                <div>
-                                    <label className="block text-sm font-medium text-gray-400 mb-2">
-                                        <Phone size={16} className="inline mr-2" />
-                                        Phone Number
-                                    </label>
-                                    <input
-                                        type="tel"
-                                        value={formData.phone}
-                                        onChange={(e) => handleChange('phone', e.target.value)}
-                                        className="w-full bg-slate-900/50 border border-white/10 rounded-xl px-4 py-2.5 text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-deep-purple-accent/50 transition-all"
-                                        placeholder="Enter your phone"
-                                    />
-                                </div>
-
-                                {/* Location */}
-                                <div>
-                                    <label className="block text-sm font-medium text-gray-400 mb-2">
-                                        <MapPin size={16} className="inline mr-2" />
-                                        Location
-                                    </label>
-                                    <input
-                                        type="text"
-                                        value={formData.location}
-                                        onChange={(e) => handleChange('location', e.target.value)}
-                                        className="w-full bg-slate-900/50 border border-white/10 rounded-xl px-4 py-2.5 text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-deep-purple-accent/50 transition-all"
-                                        placeholder="Enter your location"
-                                    />
+                                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                    <div className="space-y-2">
+                                        <label className={labelStyle}><User size={14} className="inline mr-2 text-theme-ash" />Full Name</label>
+                                        <input
+                                            type="text"
+                                            value={formData.name}
+                                            onChange={(e) => handleChange('name', e.target.value)}
+                                            className={inputStyle}
+                                            placeholder="John Doe"
+                                            required
+                                        />
+                                    </div>
+                                    <div className="space-y-2">
+                                        <label className={labelStyle}><Mail size={14} className="inline mr-2 text-theme-ash" />Email</label>
+                                        <input
+                                            type="email"
+                                            value={formData.email}
+                                            onChange={(e) => handleChange('email', e.target.value)}
+                                            className={inputStyle}
+                                            placeholder="john@example.com"
+                                            required
+                                        />
+                                    </div>
+                                    <div className="space-y-2">
+                                        <label className={labelStyle}><Phone size={14} className="inline mr-2 text-theme-ash" />Phone</label>
+                                        <input
+                                            type="tel"
+                                            value={formData.phone}
+                                            onChange={(e) => handleChange('phone', e.target.value)}
+                                            className={inputStyle}
+                                            placeholder="+1 (555) 000-0000"
+                                        />
+                                    </div>
+                                    <div className="space-y-2">
+                                        <label className={labelStyle}><MapPin size={14} className="inline mr-2 text-theme-ash" />Location</label>
+                                        <input
+                                            type="text"
+                                            value={formData.location}
+                                            onChange={(e) => handleChange('location', e.target.value)}
+                                            className={inputStyle}
+                                            placeholder="City, Country"
+                                        />
+                                    </div>
                                 </div>
 
                                 {/* Buttons */}
-                                <div className="flex space-x-3 pt-4">
+                                <div className="flex space-x-4 pt-4">
                                     <button
                                         type="button"
                                         onClick={onClose}
-                                        className="flex-1 px-4 py-2.5 rounded-xl border border-white/10 text-gray-400 hover:text-white hover:bg-white/5 transition-all font-medium"
+                                        className="flex-1 px-8 py-4 rounded-2xl border border-white/5 text-gray-400 hover:text-white hover:bg-white/5 transition-all font-bold"
                                     >
-                                        Cancel
+                                        Discard
                                     </button>
                                     <button
                                         type="submit"
-                                        className="flex-1 px-4 py-2.5 rounded-xl bg-deep-purple-accent text-white hover:bg-purple-600 transition-all font-medium shadow-lg shadow-deep-purple-accent/20"
+                                        className="flex-1 px-8 py-4 rounded-2xl bg-theme-ash text-white hover:bg-theme-ash-light transition-all font-bold shadow-2xl shadow-theme-ash/20"
                                     >
-                                        Save Changes
+                                        Synchronize
                                     </button>
                                 </div>
                             </form>

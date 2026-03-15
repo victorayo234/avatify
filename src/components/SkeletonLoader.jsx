@@ -5,7 +5,7 @@ const SkeletonLoader = ({ type = 'default', count = 1, className = '' }) => {
     const skeletons = {
         // Card skeleton
         card: (
-            <div className={`bg-deep-purple-surface border border-white/5 rounded-3xl p-6 ${className}`}>
+            <div className={`bg-dark-grey-surface border border-white/5 rounded-3xl p-6 ${className}`}>
                 <div className="animate-pulse space-y-4">
                     <div className="h-4 bg-slate-700/50 rounded w-1/3"></div>
                     <div className="h-8 bg-slate-700/50 rounded w-1/2"></div>
@@ -29,7 +29,7 @@ const SkeletonLoader = ({ type = 'default', count = 1, className = '' }) => {
 
         // Chart skeleton
         chart: (
-            <div className={`bg-deep-purple-surface border border-white/5 rounded-3xl p-6 ${className}`}>
+            <div className={`bg-dark-grey-surface border border-white/5 rounded-3xl p-6 ${className}`}>
                 <div className="animate-pulse">
                     <div className="h-4 bg-slate-700/50 rounded w-1/4 mb-4"></div>
                     <div className="h-64 bg-slate-700/50 rounded-2xl"></div>
@@ -39,7 +39,7 @@ const SkeletonLoader = ({ type = 'default', count = 1, className = '' }) => {
 
         // Stat card skeleton
         statCard: (
-            <div className={`bg-deep-purple-surface border border-white/5 rounded-3xl p-6 ${className}`}>
+            <div className={`bg-dark-grey-surface border border-white/5 rounded-3xl p-6 ${className}`}>
                 <div className="animate-pulse space-y-3">
                     <div className="flex items-center justify-between">
                         <div className="h-4 bg-slate-700/50 rounded w-1/3"></div>
@@ -53,7 +53,7 @@ const SkeletonLoader = ({ type = 'default', count = 1, className = '' }) => {
 
         // Balance card skeleton
         balance: (
-            <div className={`bg-gradient-to-br from-deep-purple-accent to-electric-blue-500 rounded-3xl p-6 ${className}`}>
+            <div className={`bg-gradient-to-br from-theme-ash to-theme-ash-light rounded-3xl p-6 ${className}`}>
                 <div className="animate-pulse space-y-4">
                     <div className="h-4 bg-white/20 rounded w-1/3"></div>
                     <div className="h-12 bg-white/20 rounded w-2/3"></div>

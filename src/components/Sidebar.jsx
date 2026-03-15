@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { LayoutDashboard, Wallet, ArrowRightLeft, PieChart, Settings, ChevronLeft, ChevronRight, LogOut } from 'lucide-react';
+import { LayoutDashboard, Wallet, ArrowRightLeft, PieChart, Settings, ChevronLeft, ChevronRight, LogOut, User } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useNavigate, useLocation } from 'react-router-dom';
 
@@ -9,10 +9,10 @@ const Sidebar = ({ isCollapsed, toggleCollapse, isMobileOpen, closeMobile, addTo
 
     // Load profile data from localStorage
     const [profileData, setProfileData] = useState({
-        name: 'Alex Johnson',
-        email: 'alex.johnson@pulse.com',
-        phone: '+1 (555) 123-4567',
-        location: 'San Francisco, CA',
+        name: 'Ayo Ade',
+        email: 'ayo@gmail.com',
+        phone: '+2348000000001',
+        location: 'Lagos, Nigeria',
         avatar: null
     });
 
@@ -92,7 +92,7 @@ const Sidebar = ({ isCollapsed, toggleCollapse, isMobileOpen, closeMobile, addTo
             <motion.aside
                 variants={sidebarVariants}
                 animate="desktop"
-                className="hidden md:flex h-screen sticky top-0 left-0 z-50 flex-col border-r border-white/10 bg-slate-900/50 backdrop-blur-xl text-white"
+                className="hidden lg:flex h-screen sticky top-0 left-0 z-50 flex-col border-r border-white/10 bg-slate-900/50 backdrop-blur-xl text-white"
             >
                 <SidebarContent
                     isCollapsed={isCollapsed}
@@ -113,7 +113,7 @@ const Sidebar = ({ isCollapsed, toggleCollapse, isMobileOpen, closeMobile, addTo
                         initial="mobile"
                         animate="mobile"
                         exit={{ x: -280 }}
-                        className={`fixed inset-y-0 left-0 z-50 flex md:hidden flex-col border-r border-white/10 bg-slate-900 text-white shadow-2xl`}
+                        className={`fixed inset-y-0 left-0 z-50 flex lg:hidden flex-col border-r border-white/10 bg-slate-900 text-white shadow-2xl`}
                     >
                         <div className="flex items-center justify-between p-6 border-b border-white/5">
                             <div className="text-2xl font-bold text-white tracking-wide">AVATIFY</div>
@@ -130,8 +130,8 @@ const Sidebar = ({ isCollapsed, toggleCollapse, isMobileOpen, closeMobile, addTo
                                         navigate(item.path);
                                         closeMobile();
                                     }}
-                                    className={`flex items-center w-full p-4 rounded-xl transition-all duration-200 ${activeItem === item.name
-                                        ? 'bg-deep-purple-accent text-white shadow-lg shadow-deep-purple-accent/20'
+                                    className={`flex items-center w-full p-4 rounded-xl transition-all duration-300 ${activeItem === item.name
+                                        ? 'bg-theme-ash text-white shadow-lg shadow-theme-ash/20'
                                         : 'text-gray-400 hover:text-white hover:bg-white/5'
                                         }`}
                                 >
@@ -140,6 +140,21 @@ const Sidebar = ({ isCollapsed, toggleCollapse, isMobileOpen, closeMobile, addTo
                                 </button>
                             ))}
                         </nav>
+
+                        {/* Mobile Profile Section */}
+                        <div className="mx-4 mb-4 p-4 bg-white/5 rounded-2xl flex items-center space-x-4">
+                            <div className="w-12 h-12 rounded-full bg-theme-ash flex items-center justify-center font-bold text-white overflow-hidden shadow-lg shadow-theme-ash/20">
+                                {profileData.avatar ? (
+                                    <img src={profileData.avatar} alt="Profile" className="w-full h-full object-cover" />
+                                ) : (
+                                    <User size={24} className="text-white/40" />
+                                )}
+                            </div>
+                            <div>
+                                <h4 className="font-bold text-white">{profileData.name}</h4>
+                                <span className="text-xs text-gray-400">Pro Account</span>
+                            </div>
+                        </div>
 
                         <div className="p-6 border-t border-white/5">
                             <button
@@ -161,12 +176,12 @@ const SidebarContent = ({ isCollapsed, toggleCollapse, activeItem, menuItems, na
     <div className="flex flex-col h-full relative">
         {/* Logo Area */}
         <div className="h-20 flex items-center px-8 border-b border-white/5">
-            <div className="w-8 h-8 rounded-xl bg-gradient-to-tr from-electric-blue-500 to-deep-purple-accent flex items-center justify-center text-white font-bold text-xl shadow-lg shadow-electric-blue-500/20">
+            <div className="w-10 h-10 rounded-2xl bg-gradient-to-tr from-theme-ash-light via-theme-ash to-theme-ash-light flex items-center justify-center text-black font-black text-2xl shadow-lg shadow-theme-ash-light/30 transition-transform hover:scale-105 active:scale-95 cursor-pointer">
                 A
             </div>
             {!isCollapsed && (
                 <span className="ml-3 font-bold text-xl tracking-tight text-white">
-                    Avatify<span className="text-electric-blue-500">.</span>
+                    Avatify<span className="text-theme-ash-light">.</span>
                 </span>
             )}
         </div>
@@ -181,7 +196,7 @@ const SidebarContent = ({ isCollapsed, toggleCollapse, activeItem, menuItems, na
                         key={item.name}
                         onClick={() => navigate(item.path)}
                         className={`w-full flex items-center p-3.5 rounded-xl transition-all duration-300 group relative overflow-hidden ${isActive
-                            ? 'bg-deep-purple-accent/10 text-white shadow-lg shadow-deep-purple-accent/20 border border-deep-purple-accent/50'
+                            ? 'bg-theme-ash/10 text-white shadow-lg shadow-theme-ash/20 border border-theme-ash/50'
                             : 'text-gray-400 hover:text-white hover:bg-white/5 border border-transparent hover:border-white/10'
                             }`}
                     >
@@ -205,11 +220,11 @@ const SidebarContent = ({ isCollapsed, toggleCollapse, activeItem, menuItems, na
 
         <div className="p-4 border-t border-white/5">
             <div className={`flex items-center ${isCollapsed ? 'justify-center' : 'space-x-4'}`}>
-                <div className="w-10 h-10 rounded-full bg-deep-purple-accent flex items-center justify-center font-bold text-white shrink-0 cursor-pointer hover:ring-2 ring-white/20 transition-all overflow-hidden">
+                <div className="w-10 h-10 rounded-full bg-theme-ash flex items-center justify-center font-bold text-white shrink-0 cursor-pointer hover:ring-2 ring-white/20 transition-all overflow-hidden">
                     {profileData.avatar ? (
                         <img src={profileData.avatar} alt="Profile" className="w-full h-full object-cover" />
                     ) : (
-                        getInitials(profileData.name)
+                        <User size={20} className="text-white/40" />
                     )}
                 </div>
                 {!isCollapsed && (

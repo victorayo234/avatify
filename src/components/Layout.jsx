@@ -11,7 +11,7 @@ const Layout = ({ children, addToast }) => {
     const closeMobileSidebar = () => setIsMobileSidebarOpen(false);
 
     return (
-        <div className="flex min-h-screen bg-slate-900 text-white font-display overflow-hidden selection:bg-electric-blue-500/30">
+        <div className="flex min-h-screen bg-slate-900 text-white font-display overflow-hidden selection:bg-theme-ash-light/30">
             {/* Sidebar with responsive props */}
             <Sidebar
                 isCollapsed={isSidebarCollapsed}
@@ -29,8 +29,8 @@ const Layout = ({ children, addToast }) => {
                 {/* Navbar with mobile toggle */}
                 <Navbar onMenuClick={toggleMobileSidebar} addToast={addToast} />
 
-                <div className="flex-1 overflow-y-auto p-4 md:p-6 lg:p-8 scrollbar-thin scrollbar-thumb-slate-700 scrollbar-track-transparent">
-                    <div className="w-full space-y-6 relative z-10 pb-20 md:pb-0">
+                <div className="flex-1 overflow-y-auto p-4 lg:p-8 scrollbar-thin scrollbar-thumb-slate-700 scrollbar-track-transparent">
+                    <div className="w-full relative z-10 pb-20 lg:pb-0">
                         {children}
 
                         {/* Footer */}
@@ -44,7 +44,7 @@ const Layout = ({ children, addToast }) => {
             {/* Mobile Overlay */}
             {isMobileSidebarOpen && (
                 <div
-                    className="fixed inset-0 bg-black/50 z-40 md:hidden backdrop-blur-sm"
+                    className="fixed inset-0 bg-black/50 z-40 lg:hidden backdrop-blur-sm"
                     onClick={closeMobileSidebar}
                 />
             )}

@@ -10,7 +10,7 @@ const assets = [
 
 const AssetTable = () => {
     return (
-        <div className="bg-deep-purple-surface border border-white/5 rounded-3xl p-6 overflow-hidden">
+        <div className="bg-dark-grey-surface border border-white/5 rounded-3xl p-6 overflow-hidden">
             <div className="flex items-center justify-between mb-6">
                 <h3 className="text-lg font-bold text-white">Top Assets</h3>
                 <button className="text-gray-400 hover:text-white transition-colors">
@@ -33,7 +33,7 @@ const AssetTable = () => {
                             <tr key={asset.symbol} className="group hover:bg-white/5 transition-colors">
                                 <td className="py-4">
                                     <div className="flex items-center space-x-3">
-                                        <div className="w-10 h-10 rounded-full bg-deep-purple-dark flex items-center justify-center font-bold text-xs text-white border border-white/5">
+                                        <div className="w-10 h-10 rounded-full bg-dark-grey-base flex items-center justify-center font-bold text-xs text-white border border-white/5">
                                             {asset.symbol.substring(0, 1)}
                                         </div>
                                         <div>

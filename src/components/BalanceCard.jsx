@@ -61,7 +61,7 @@ const BalanceCard = ({ addToast }) => {
     };
 
     return (
-        <div className="bg-deep-purple-surface border border-white/5 rounded-3xl p-6 relative overflow-hidden group hover-shine purple-glow">
+        <div className="bg-dark-grey-surface border border-white/5 rounded-3xl p-6 relative overflow-hidden group hover-shine ash-glow h-full w-full">
             {/* Gradient bloom removed for solid clean look */}
 
             <div className="relative z-10 flex flex-col justify-between h-full">
@@ -88,21 +88,21 @@ const BalanceCard = ({ addToast }) => {
                 <div className="flex items-center space-x-4 mt-6">
                     <button
                         onClick={() => addToast('Deposit feature coming soon!', 'info')}
-                        className="flex-1 flex items-center justify-center space-x-2 bg-white text-deep-purple-dark py-2.5 rounded-xl font-bold hover:bg-gray-100 transition-all hover:scale-105 active:scale-95 shadow-lg shadow-white/5 cursor-pointer"
+                        className="flex-1 flex items-center justify-center space-x-2 bg-white text-dark-grey-base py-2.5 rounded-xl font-bold hover:bg-gray-100 transition-all hover:scale-105 active:scale-95 shadow-lg shadow-white/5 cursor-pointer"
                     >
                         <Plus size={18} />
                         <span>Deposit</span>
                     </button>
                     <button
                         onClick={() => addToast('Transfer modal opening...', 'info')}
-                        className="flex-1 flex items-center justify-center space-x-2 bg-deep-purple-dark border border-white/10 text-white py-2.5 rounded-xl font-bold hover:bg-white/10 transition-all hover:scale-105 active:scale-95 hover:border-white/20 cursor-pointer"
+                        className="flex-1 flex items-center justify-center space-x-2 bg-dark-grey-base border border-white/10 text-white py-2.5 rounded-xl font-bold hover:bg-white/10 transition-all hover:scale-105 active:scale-95 hover:border-white/20 cursor-pointer"
                     >
                         <Send size={18} />
                         <span>Send</span>
                     </button>
                     <button
                         onClick={() => addToast('Opening converter...', 'info')}
-                        className="p-2.5 rounded-xl bg-deep-purple-dark border border-white/10 text-gray-400 hover:text-white hover:bg-white/10 transition-all hover:scale-105 active:scale-95 cursor-pointer"
+                        className="p-2.5 rounded-xl bg-dark-grey-base border border-white/10 text-gray-400 hover:text-white hover:bg-white/10 transition-all hover:scale-105 active:scale-95 cursor-pointer"
                     >
                         <Repeat size={20} />
                     </button>
@@ -114,18 +114,18 @@ const BalanceCard = ({ addToast }) => {
                     <LineChart data={data}>
                         <Tooltip
                             contentStyle={{
-                                backgroundColor: '#1e1b2e',
+                                backgroundColor: '#121212',
                                 border: '1px solid rgba(255,255,255,0.1)',
                                 borderRadius: '8px',
                                 fontSize: '12px'
                             }}
                             labelStyle={{ color: '#9ca3af' }}
-                            itemStyle={{ color: '#3B82F6' }}
+                            itemStyle={{ color: '#555555' }}
                         />
                         <Line
                             type="monotone"
                             dataKey="value"
-                            stroke="#3B82F6"
+                            stroke="#555555"
                             strokeWidth={2}
                             dot={false}
                         />

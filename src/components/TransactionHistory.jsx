@@ -12,7 +12,7 @@ const transactions = [
     { id: '#TRX-9828', name: 'Server Costs', date: 'Dec 08, 2023', amount: '-$450.00', status: 'Failed', statusColor: 'bg-red-500/10 text-red-500', isIncome: false },
 ];
 
-const TransactionHistory = ({ addToast }) => {
+const TransactionHistory = ({ addToast, className = '' }) => {
     const [filter, setFilter] = useState('all');
     const [searchTerm, setSearchTerm] = useState('');
     const [sortBy, setSortBy] = useState('date');
@@ -55,7 +55,7 @@ const TransactionHistory = ({ addToast }) => {
     };
 
     return (
-        <div className="bg-deep-purple-surface border border-white/5 rounded-3xl p-6 hover-shine purple-glow group">
+        <div className={`bg-dark-grey-surface border border-white/5 rounded-3xl p-6 hover-shine ash-glow group ${className}`}>
             <div className="flex flex-col sm:flex-row sm:items-center justify-between mb-6 gap-4">
                 <h3 className="text-lg font-bold text-white">Transaction History</h3>
 
@@ -69,7 +69,7 @@ const TransactionHistory = ({ addToast }) => {
                     </button>
                     <button
                         onClick={() => addToast('Syncing blockchain data...', 'info')}
-                        className="flex items-center space-x-2 px-3 py-2 rounded-xl text-sm font-medium bg-deep-purple-accent text-white hover:bg-purple-600 transition-all shadow-lg shadow-deep-purple-accent/20"
+                        className="flex items-center space-x-2 px-3 py-2 rounded-xl text-sm font-medium bg-theme-ash text-white hover:bg-neutral-500 transition-all shadow-lg shadow-theme-ash/20"
                     >
                         <RefreshCcw size={16} />
                         <span>Sync</span>
@@ -83,8 +83,8 @@ const TransactionHistory = ({ addToast }) => {
                     <button
                         onClick={() => setFilter('all')}
                         className={`px-4 py-2 rounded-xl text-sm font-medium transition-all ${filter === 'all'
-                            ? 'bg-deep-purple-accent text-white shadow-lg shadow-deep-purple-accent/20'
-                            : 'bg-deep-purple-dark text-gray-400 hover:text-white hover:bg-white/5'
+                            ? 'bg-theme-ash text-white shadow-lg shadow-theme-ash/20'
+                            : 'bg-dark-grey-base text-gray-400 hover:text-white hover:bg-white/5'
                             }`}
                     >
                         All
@@ -93,7 +93,7 @@ const TransactionHistory = ({ addToast }) => {
                         onClick={() => setFilter('income')}
                         className={`px-4 py-2 rounded-xl text-sm font-medium transition-all ${filter === 'income'
                             ? 'bg-emerald-500/20 text-emerald-400 border border-emerald-500/50'
-                            : 'bg-deep-purple-dark text-gray-400 hover:text-white hover:bg-white/5'
+                            : 'bg-dark-grey-base text-gray-400 hover:text-white hover:bg-white/5'
                             }`}
                     >
                         Income
@@ -102,7 +102,7 @@ const TransactionHistory = ({ addToast }) => {
                         onClick={() => setFilter('expense')}
                         className={`px-4 py-2 rounded-xl text-sm font-medium transition-all ${filter === 'expense'
                             ? 'bg-red-500/20 text-red-400 border border-red-500/50'
-                            : 'bg-deep-purple-dark text-gray-400 hover:text-white hover:bg-white/5'
+                            : 'bg-dark-grey-base text-gray-400 hover:text-white hover:bg-white/5'
                             }`}
                     >
                         Expenses
@@ -116,7 +116,7 @@ const TransactionHistory = ({ addToast }) => {
                         placeholder="Search transactions..."
                         value={searchTerm}
                         onChange={(e) => setSearchTerm(e.target.value)}
-                        className="w-full bg-deep-purple-dark border border-white/5 rounded-xl py-2 pl-10 pr-4 text-sm text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-deep-purple-accent/50 transition-all"
+                        className="w-full bg-dark-grey-base border border-white/5 rounded-xl py-2 pl-10 pr-4 text-sm text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-theme-ash/50 transition-all"
                     />
                 </div>
             </div>
@@ -126,9 +126,9 @@ const TransactionHistory = ({ addToast }) => {
                     <thead>
                         <tr className="text-gray-500 text-xs uppercase tracking-wider border-b border-white/5">
                             <th className="pb-4 font-medium pl-4">Transaction</th>
-                            <th className="pb-4 font-medium text-center">Status</th>
+                            <th className="pb-4 font-medium text-center hidden sm:table-cell">Status</th>
                             <th
-                                className="pb-4 font-medium cursor-pointer hover:text-white transition-colors group"
+                                className="pb-4 font-medium cursor-pointer hover:text-white transition-colors group hidden md:table-cell"
                                 onClick={() => toggleSort('date')}
                             >
                                 <div className="flex items-center space-x-1">
@@ -161,13 +161,13 @@ const TransactionHistory = ({ addToast }) => {
                                         </div>
                                     </div>
                                 </td>
-                                <td className="py-4 text-center">
+                                <td className="py-4 text-center hidden sm:table-cell">
                                     <span className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium border border-transparent ${trx.statusColor}`}>
                                         {trx.status === 'Success' && <span className="w-1.5 h-1.5 rounded-full bg-current mr-1.5" />}
                                         {trx.status}
                                     </span>
                                 </td>
-                                <td className="py-4 text-gray-400 font-medium">{trx.date}</td>
+                                <td className="py-4 text-gray-400 font-medium hidden md:table-cell">{trx.date}</td>
                                 <td className={`py-4 pr-4 text-right font-bold ${trx.isIncome ? 'text-emerald-400' : 'text-white'}`}>
                                     {trx.amount}
                                 </td>

@@ -10,7 +10,7 @@ const data = [
 
 const CustomerSatisfaction = () => {
     return (
-        <div className="bg-deep-purple-surface border border-white/5 rounded-3xl p-6 h-full flex flex-col">
+        <div className="bg-dark-grey-surface border border-white/5 rounded-3xl p-6 h-full flex flex-col">
             <div className="flex items-center justify-between mb-2">
                 <h3 className="text-lg font-bold text-white">Satisfaction</h3>
                 <button className="text-gray-500 hover:text-white transition-colors">
@@ -37,7 +37,7 @@ const CustomerSatisfaction = () => {
                         />
                         <Tooltip
                             contentStyle={{
-                                backgroundColor: '#1e1b2e',
+                                backgroundColor: '#121212',
                                 borderColor: 'rgba(255,255,255,0.05)',
                                 borderRadius: '12px',
                                 color: '#fff'

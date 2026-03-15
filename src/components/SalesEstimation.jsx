@@ -14,7 +14,7 @@ const data = [
 
 const SalesEstimation = () => {
     return (
-        <div className="bg-deep-purple-surface border border-white/5 rounded-3xl p-6 h-full flex flex-col">
+        <div className="bg-dark-grey-surface border border-white/5 rounded-3xl p-6 h-full flex flex-col">
             <div className="flex items-center justify-between mb-6">
                 <div>
                     <h3 className="text-lg font-bold text-white">Sales Estimation</h3>
@@ -28,7 +28,7 @@ const SalesEstimation = () => {
             <div className="flex-1 min-h-[300px]">
                 <ResponsiveContainer width="100%" height="100%">
                     <BarChart data={data}>
-                        <CartesianGrid strokeDasharray="3 3" stroke="#ffffff10" vertical={false} />
+                        <CartesianGrid strokeDasharray="3 3" stroke="#333333" vertical={false} />
                         <XAxis
                             dataKey="name"
                             stroke="#94a3b8"
@@ -46,15 +46,15 @@ const SalesEstimation = () => {
                         <Tooltip
                             cursor={{ fill: '#ffffff05' }}
                             contentStyle={{
-                                backgroundColor: '#1e1b2e',
+                                backgroundColor: '#121212',
                                 borderColor: 'rgba(255,255,255,0.05)',
                                 borderRadius: '12px',
                                 color: '#fff'
                             }}
                         />
                         <Legend iconType="circle" wrapperStyle={{ paddingTop: '20px' }} />
-                        <Bar dataKey="revenue" stackId="a" fill="#9333ea" radius={[0, 0, 4, 4]} name="Revenue" />
-                        <Bar dataKey="target" stackId="a" fill="#1e1b2e" stroke="#9333ea" strokeWidth={1} radius={[4, 4, 0, 0]} name="Target" />
+                        <Bar dataKey="revenue" stackId="a" fill="#555555" radius={[0, 0, 4, 4]} name="Revenue" />
+                        <Bar dataKey="target" stackId="a" fill="#121212" stroke="#555555" strokeWidth={1} radius={[4, 4, 0, 0]} name="Target" />
                     </BarChart>
                 </ResponsiveContainer>
             </div>

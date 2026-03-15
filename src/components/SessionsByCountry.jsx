@@ -3,14 +3,14 @@ import { MoreHorizontal } from 'lucide-react';
 
 const countryData = [
     { name: 'United States', code: '🇺🇸', percentage: 85, color: 'bg-emerald-500' },
-    { name: 'Japan', code: '🇯🇵', percentage: 70, color: 'bg-deep-purple-accent' },
+    { name: 'Japan', code: '🇯🇵', percentage: 70, color: 'bg-theme-ash' },
     { name: 'Indonesia', code: '🇮🇩', percentage: 45, color: 'bg-orange-500' },
-    { name: 'South Korea', code: '🇰🇷', percentage: 38, color: 'bg-electric-blue-500' },
+    { name: 'South Korea', code: '🇰🇷', percentage: 38, color: 'bg-theme-ash-light' },
 ];
 
 const SessionsByCountry = () => {
     return (
-        <div className="bg-deep-purple-surface border border-white/5 rounded-3xl p-6 h-full">
+        <div className="bg-dark-grey-surface border border-white/5 rounded-3xl p-6 h-full">
             <div className="flex items-center justify-between mb-6">
                 <h3 className="text-lg font-bold text-white">Session by Country</h3>
                 <button className="text-gray-500 hover:text-white transition-colors">
@@ -27,7 +27,7 @@ const SessionsByCountry = () => {
                             </span>
                             <span className="text-white font-bold">{country.percentage}%</span>
                         </div>
-                        <div className="h-2 w-full bg-deep-purple-dark rounded-full overflow-hidden">
+                        <div className="h-2 w-full bg-dark-grey-base rounded-full overflow-hidden">
                             <div
                                 className={`h-full rounded-full ${country.color}`}
                                 style={{ width: `${country.percentage}%` }}

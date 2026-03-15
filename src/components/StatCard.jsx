@@ -55,15 +55,15 @@ const StatCard = ({ title, value, change, isPositive, icon: Icon, index = 0 }) =
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.4, delay: index * 0.1 }}
-            className="bg-deep-purple-surface border border-white/5 rounded-3xl p-6 relative overflow-hidden flex flex-col justify-between group hover:border-deep-purple-accent/70 hover:shadow-[0_0_50px_-5px_rgba(147,51,234,0.5)] hover:-translate-y-1 transition-all duration-300"
+            className="bg-dark-grey-surface border border-white/5 rounded-3xl p-6 relative overflow-hidden flex flex-col justify-between group hover:border-theme-ash/70 hover:shadow-[0_0_50px_-5px_rgba(163, 163, 163,0.5)] hover:-translate-y-1 transition-all duration-300"
         >
             {/* Hover Sheen Effect - Purple Tinted */}
-            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-purple-500/10 to-transparent skew-x-12 translate-x-[-150%] group-hover:animate-shine z-10 pointer-events-none" />
+            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-neutral-400/10 to-transparent skew-x-12 translate-x-[-150%] group-hover:animate-shine z-10 pointer-events-none" />
 
             {/* Background Glow on Hover - Stronger */}
-            <div className="absolute inset-0 bg-deep-purple-accent/0 group-hover:bg-deep-purple-accent/10 transition-colors duration-300 pointer-events-none" />
+            <div className="absolute inset-0 bg-theme-ash/0 group-hover:bg-theme-ash/10 transition-colors duration-300 pointer-events-none" />
             <div className="flex justify-between items-start mb-4">
-                <div className="p-3 bg-deep-purple-dark rounded-xl border border-white/5 text-white">
+                <div className="p-3 bg-dark-grey-base rounded-xl border border-white/5 text-white">
                     <Icon size={20} />
                 </div>
                 <button className="text-gray-500 hover:text-white transition-colors">

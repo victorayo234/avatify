@@ -35,17 +35,17 @@ const Navbar = ({ onMenuClick, addToast }) => {
     };
 
     return (
-        <header className="sticky top-0 z-40 bg-slate-900/80 backdrop-blur-xl border-b border-white/10 p-3 md:p-6">
+        <header className="sticky top-0 z-40 bg-slate-900/80 backdrop-blur-xl border-b border-white/10 p-3 lg:p-6">
             <div className="flex items-center justify-between">
                 <div className="flex items-center gap-4">
                     <button
                         onClick={onMenuClick}
-                        className="p-2 -ml-2 rounded-lg text-gray-400 hover:text-white hover:bg-white/5 md:hidden transition-colors"
+                        className="p-2 -ml-2 rounded-lg text-gray-400 hover:text-white hover:bg-white/5 lg:hidden transition-colors"
                     >
                         <Menu size={24} />
                     </button>
                     <div>
-                        <h1 className="text-xl md:text-2xl font-bold text-white">
+                        <h1 className="text-xl lg:text-2xl font-bold text-white">
                             <span className="hidden lg:inline">Dashboard Overview</span>
                             <span className="lg:hidden">Dashboard</span>
                         </h1>
@@ -53,10 +53,10 @@ const Navbar = ({ onMenuClick, addToast }) => {
                     </div>
                 </div>
 
-                <div className="flex items-center space-x-3 md:space-x-6">
+                <div className="flex items-center space-x-3 lg:space-x-6">
                     {/* Interactive Search Bar */}
                     <div className={`relative group hidden sm:block transition-all duration-300 ${isSearchFocused ? 'w-96' : 'w-64'}`}>
-                        <Search className={`absolute left-3 top-1/2 -translate-y-1/2 transition-colors ${isSearchFocused ? 'text-deep-purple-accent' : 'text-gray-500'}`} size={18} />
+                        <Search className={`absolute left-3 top-1/2 -translate-y-1/2 transition-colors ${isSearchFocused ? 'text-theme-ash' : 'text-gray-500'}`} size={18} />
                         <input
                             type="text"
                             placeholder="Type 'btc', 'eth'..."
@@ -73,7 +73,7 @@ const Navbar = ({ onMenuClick, addToast }) => {
                                     setSearchResults([]);
                                 }
                             }}
-                            className={`bg-slate-800/50 border rounded-xl py-2.5 pl-10 pr-4 text-sm text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-deep-purple-accent/50 w-full transition-all ${isSearchFocused ? 'border-deep-purple-accent/50 bg-slate-800' : 'border-white/10'}`}
+                            className={`bg-slate-800/50 border rounded-xl py-2.5 pl-10 pr-4 text-sm text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-theme-ash/50 w-full transition-all ${isSearchFocused ? 'border-theme-ash/50 bg-slate-800' : 'border-white/10'}`}
                         />
 
                         {/* Search Results Dropdown */}
@@ -97,7 +97,7 @@ const Navbar = ({ onMenuClick, addToast }) => {
                                         >
                                             <div className="flex items-center space-x-3">
                                                 {result.type === 'crypto' ? (
-                                                    <div className="w-8 h-8 rounded-full bg-deep-purple-accent/20 flex items-center justify-center text-xs font-bold">
+                                                    <div className="w-8 h-8 rounded-full bg-theme-ash/20 flex items-center justify-center text-xs font-bold">
                                                         {result.symbol}
                                                     </div>
                                                 ) : (
@@ -146,7 +146,7 @@ const Navbar = ({ onMenuClick, addToast }) => {
                             className="relative p-2 md:p-2.5 rounded-xl hover:bg-slate-800/50 text-gray-400 hover:text-white transition-all border border-transparent hover:border-white/10"
                         >
                             <Bell size={20} />
-                            <span className="absolute top-2 right-2.5 w-2 h-2 bg-electric-blue-500 rounded-full ring-2 ring-slate-900 animate-pulse"></span>
+                            <span className="absolute top-2 right-2.5 w-2 h-2 bg-theme-ash-light rounded-full ring-2 ring-slate-900 animate-pulse"></span>
                         </button>
 
                         {/* Notification Dropdown */}
@@ -180,9 +180,9 @@ const Navbar = ({ onMenuClick, addToast }) => {
                                                         addToast(notif.message, 'info');
                                                         setShowNotifications(false);
                                                     }}
-                                                    className={`w-full p-4 flex items-start space-x-3 hover:bg-white/5 transition-colors border-b border-white/5 last:border-0 ${notif.unread ? 'bg-deep-purple-accent/5' : ''}`}
+                                                    className={`w-full p-4 flex items-start space-x-3 hover:bg-white/5 transition-colors border-b border-white/5 last:border-0 ${notif.unread ? 'bg-theme-ash/5' : ''}`}
                                                 >
-                                                    <div className={`w-2 h-2 rounded-full mt-2 ${notif.unread ? 'bg-electric-blue-500' : 'bg-transparent'}`} />
+                                                    <div className={`w-2 h-2 rounded-full mt-2 ${notif.unread ? 'bg-theme-ash-light' : 'bg-transparent'}`} />
                                                     <div className="flex-1 text-left">
                                                         <div className="text-sm font-medium text-white">{notif.title}</div>
                                                         <div className="text-xs text-gray-400 mt-1">{notif.message}</div>
@@ -192,7 +192,7 @@ const Navbar = ({ onMenuClick, addToast }) => {
                                             ))}
                                         </div>
                                         <div className="p-3 border-t border-white/10">
-                                            <button className="w-full py-2 text-sm font-medium text-deep-purple-accent hover:text-purple-400 transition-colors">
+                                            <button className="w-full py-2 text-sm font-medium text-theme-ash hover:text-neutral-400 transition-colors">
                                                 View all notifications
                                             </button>
                                         </div>
@@ -203,7 +203,7 @@ const Navbar = ({ onMenuClick, addToast }) => {
                     </div>
 
                     {/* Mobile Profile Pic */}
-                    <div className="md:hidden w-8 h-8 rounded-full bg-deep-purple-accent flex items-center justify-center font-bold text-xs text-white">
+                    <div className="lg:hidden w-8 h-8 rounded-full bg-theme-ash flex items-center justify-center font-bold text-xs text-white">
                         AV
                     </div>
                 </div>
